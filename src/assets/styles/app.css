@@ -1,0 +1,13 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap'); */
+@import './components/index.css';
+@import './template/index.css';
+@import './vendors/index.css';
+@import './tailwind/index.css';
+
+.menu-item.menu-item-transparent.menu-item-hoverable:hover {
+  background-color: transparent;
+}
+
+.dialog-overlay.dialog-overlay-after-open {
+  overflow: scroll !important;
+}
