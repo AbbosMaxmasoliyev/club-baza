@@ -17,7 +17,7 @@ const SignIn = () => {
 	const dispatch = useDispatch()
 	const getClubs = async () => {
 		try {
-			fetch("http://93.127.163.78:4004/api/v1/admin/club")
+			fetch("https://admin.launchpro.uz/api/v1/admin/club")
 				.then(res => res.json())
 				.then(res => {
 
