@@ -1,6 +1,6 @@
 {
-  "short_name": "Palma Admin Dashbaord",
-  "name": "Palma Kompaniyasi xaridorlari bazasi",
+  "short_name": "Clublar App",
+  "name": "Clublar Bazasi",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "palma192.png",
+      "src": "clublar192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "palma512.png",
+      "src": "clublar512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
