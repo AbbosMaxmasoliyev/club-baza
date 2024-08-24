@@ -16,11 +16,15 @@ import { getProductAll } from 'services/product.service';
 import { getTimeValues } from 'components/ui/TimeInput/utils';
 import moment from 'moment';
 import { updateSubscribe } from 'services/founder-menejer.service';
+import { updateSubscribeAdmin } from 'services/clubs.service';
+import { useParams } from 'react-router-dom';
 
 const { Tr, Th, Td, THead, TBody } = Table
-const UpdateUser = ({ setShow, submitNext, show, userData }) => {
-    console.log(userData);
+const UpdateUser = ({ setShow, submitNext, show, userData, subscription_id = "" }) => {
+    const { club_id } = useParams()
+    console.log(setShow, submitNext, show, userData, subscription_id);
 
+    const role = localStorage.getItem("role")
     const [product, setProduct] = useState(null)
 
     const initialValues = {
@@ -57,18 +61,33 @@ const UpdateUser = ({ setShow, submitNext, show, userData }) => {
 
         setDisabled(true);
         setDisabledFor(false);
+        if (role === "manager") {
 
-        try {
-            let respUser = await updateSubscribe(userData._id, { nextPaymentDate: new Date(values.nextPaymentDate).getTime() });
-            console.log(respUser);
+            try {
+                let respUser = await updateSubscribe(userData._id, { nextPaymentDate: new Date(values.nextPaymentDate).getTime() });
+                console.log(respUser);
 
-            openNotification("success", "User muvaffaqqiyatli yangilandi");
-            onDialogClose();
-            getUsers(null)
-            submitNext()
+                openNotification("success", "User muvaffaqqiyatli yangilandi");
+                onDialogClose();
+                getUsers(null)
+                submitNext()
 
-        } catch (error) {
-            openNotification("danger", "Xatolik bor");
+            } catch (error) {
+                openNotification("danger", "Xatolik bor");
+            }
+        } else if (role === "superadmin") {
+            try {
+                let respUser = await updateSubscribeAdmin(subscription_id, club_id, { nextPaymentDate: new Date(values.nextPaymentDate).getTime() });
+                console.log(respUser);
+
+                openNotification("success", "User muvaffaqqiyatli yangilandi");
+                onDialogClose();
+                getUsers(null)
+                submitNext()
+
+            } catch (error) {
+                openNotification("danger", "Xatolik bor");
+            }
         }
         setDisabled(false);
     };

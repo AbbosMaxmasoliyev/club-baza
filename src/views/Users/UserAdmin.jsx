@@ -54,27 +54,24 @@ const UsersAdmin = ({ url }) => {
     const getClients = async (query) => {
         try {
             let resp = await getUsers(query)
-            console.log(resp);
-            
+            console.log(resp.data.subscriptions);
+
+            setData(resp.data.subscriptions)
+            setTotal(resp.data.total)
+
         } catch (error) {
 
         }
     }
 
-    useEffect(() => {
-        getClients(`?page=${page}&item=${selectValue}&club_id=${club_id}`)
-    }, [])
 
 
-    useEffect(() => {
-        getClients(`?page=${page}&item=${selectValue}&search=${search}&club_id=${club_id}`)
-    }, [search])
 
 
 
     useEffect(() => {
         getClients(`?page=${page}&item=${selectValue}${search ? `&search=${search}` : ""}&club_id=${club_id}`)
-    }, [selectValue, page])
+    }, [selectValue, page, search])
 
     const getUpdateInformation = async (idData) => {
         try {
@@ -129,10 +126,10 @@ const UsersAdmin = ({ url }) => {
                 </div>
             </div>
             {
-                updateShow && updateData ? <UpdateUser userData={updateData} removeId={setUpdateId} setShow={setUpdateShow} show={updateShow} submitNext={() => {
+                updateShow && updateData ? <UpdateUser subscription_id={updateData._id} userData={updateData} removeId={setUpdateId} setShow={setUpdateShow} show={updateShow} submitNext={() => {
                     setUpdateData(null)
                     setUpdateShow(null)
-                    getClients(`?page=${page}&item=${selectValue}`)
+                    getClients(`?page=${1}&item=${selectValue}${search ? `&search=${search}` : ""}&club_id=${club_id}`)
                 }} /> : null
             }
             {
@@ -205,6 +202,7 @@ const UsersAdmin = ({ url }) => {
 
                                             </> :
                                             <Button variant="danger" size="sm" onClick={() => {
+
                                                 setUpdateData({ user, project, nextPaymentDate, ...subscription })
                                                 setUpdateShow(true)
                                             }} ><BsPen className="text-blue-600" /></Button>

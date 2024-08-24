@@ -61,20 +61,12 @@ const Projects = ({ club_id }) => {
         }
     }
 
-    useEffect(() => {
-        getClients()
-    }, [])
-
-
-    useEffect(() => {
-        getClients()
-    }, [search])
 
 
 
     useEffect(() => {
         getClients()
-    }, [selectValue, page])
+    }, [selectValue, page, search])
 
     // const getUpdateInformation = async (idData) => {
     //     try {

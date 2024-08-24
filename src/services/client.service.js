@@ -20,6 +20,21 @@ export const createCleint = async (data) => {
 
 export const getUsers = async (query) => {
     try {
+        let clientResponse = await BaseService.get(`/admin/subscription${query ? query : ""}`,)
+        return clientResponse
+
+    } catch (error) {
+        console.log(error);
+        return error
+
+
+    }
+}
+
+
+
+export const getManagers = async (query) => {
+    try {
         let clientResponse = await BaseService.get(`/admin/menejer${query ? query : ""}`,)
         return clientResponse
 

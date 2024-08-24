@@ -158,3 +158,18 @@ export const apiGetProducts = async (id) => {
     }
 }
 
+
+export const updateSubscribeAdmin = async (id, club_id, data) => {
+    try {
+        let response = await BaseService.put(`/admin/subscription/${id}?club_id=${club_id}`, data, {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        return response
+
+    } catch (error) {
+        console.log(error);
+
+    }
+}

@@ -8,10 +8,10 @@ import { openNotification } from 'utils/notification';
 
 const ClubForm = ({ clubData, show, setShow, openDialog, nextSubmit, isUpdate }) => {
     console.log(clubData);
+    console.log(clubData);
 
     const initialValues = {
         name: clubData?.name || '',
-        db_name: clubData?.db_name || '',
         bot_username: clubData?.bot_username || '',
         url: clubData?.url || '',
 
@@ -19,7 +19,6 @@ const ClubForm = ({ clubData, show, setShow, openDialog, nextSubmit, isUpdate })
 
     const validationSchema = Yup.object({
         name: Yup.string().required('Ismingizni kiriting'),
-        db_name: Yup.string().required('Kanal nomini kiriting'),
         url: Yup.string().required('Kanal IDsini kiriting'),
         bot_username: Yup.string().required('Bot linkini kiriting'),
         // image: Yup.mixed()
@@ -108,11 +107,7 @@ const ClubForm = ({ clubData, show, setShow, openDialog, nextSubmit, isUpdate })
                             </div>
 
 
-                            <div className='flex flex-col gap-2 my-5'>
-                                <label htmlFor="db_name" className='font-bold text-white'>Database Url</label>
-                                <Field className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:border-blue-300 bg-transparent " name="db_name" as="input" />
-                                <ErrorMessage name="db_name" className='text-red-600' component="div" />
-                            </div>
+
                             <div className='flex flex-col gap-2 my-5'>
                                 <label htmlFor="url" className='font-bold text-white'>URL</label>
                                 <Field className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:border-blue-300 bg-transparent " name="url" as="input" />

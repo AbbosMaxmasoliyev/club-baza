@@ -5,7 +5,7 @@ import { BsBasket2Fill, BsPen, BsPenFill } from 'react-icons/bs'
 import { CgEditBlackPoint, CgEditExposure, CgEditFlipV, CgEditHighlight, CgEditStraight } from 'react-icons/cg'
 import { formattedPhoneNumber } from 'utils/formatted'
 import getUpdateInformation from './UpdateForm'
-import { clientGetById, createCleint, deleteUser, getUsers } from 'services/client.service'
+import { clientGetById, createCleint, deleteUser, getManagers, getUsers } from 'services/client.service'
 import { openNotification } from 'utils/notification'
 import UpdateUser from './UpdateForm'
 import CreateUser from './CreateUser'
@@ -46,7 +46,7 @@ const Founder = ({ role, view }) => {
     const getFounderTable = async (query) => {
         try {
             setLoading(true)
-            let managersResponse = await getUsers(query)
+            let managersResponse = await getManagers(query)
             setLoading(false)
             console.log(managersResponse);
             setData(managersResponse.data.menejers.filter(menejer => menejer.role === role))
@@ -57,7 +57,6 @@ const Founder = ({ role, view }) => {
     }
 
     useEffect(() => {
-        getFounderTable(`?page=${page}&item=${selectValue}&club_id=${club_id}`)
         return () => {
             setData([])
         }
