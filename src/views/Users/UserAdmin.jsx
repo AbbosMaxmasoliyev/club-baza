@@ -186,8 +186,8 @@ const UsersAdmin = ({ url }) => {
                         data?.map(({ user, project, nextPaymentDate, ...subscription }, index) => {
                             return <Tr>
                                 <Td>{((page - 1) * (selectValue)) + index + 1}</Td>
-                                <Td>{`${user.firstName} ${user.lastName}`}</Td>
-                                <Td>{formattedPhoneNumber(user.phoneNumber)}</Td>
+                                <Td>{`${user?.firstName} ${user?.lastName}`}</Td>
+                                <Td>{formattedPhoneNumber(user?.phoneNumber)}</Td>
                                 <Td> <span className="text-center w-full block">{project?.channelName}</span></Td>
                                 <Td>{moment(nextPaymentDate).format("DD-MM-YYYY")}</Td>
                                 <Td>

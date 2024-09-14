@@ -80,7 +80,7 @@ const Founder = ({ role, view }) => {
     }
     const onDialogOk = async () => {
         try {
-            let data = await deleteUser(deleteData._id, club_id)
+            let data = await deleteUser(deleteData?._id, club_id)
             console.log(data);
             setDeleteData({})
             openNotification("success", "Muvaffaqqiyalti o'chirildi")
@@ -131,10 +131,10 @@ const Founder = ({ role, view }) => {
                 >
                     <h5 className="mb-4">Foydalanuvchini o'chirmoqchimisiz</h5>
                     <p>
-                        Ismi: {deleteData.full_name}
+                        Ismi: {deleteData?.full_name}
                     </p>
                     <p>
-                        Telefoni: {deleteData.phone_number}
+                        Telefoni: {deleteData?.phone_number}
                     </p>
 
                     <div className="text-right mt-6">
@@ -176,9 +176,9 @@ const Founder = ({ role, view }) => {
 
                                     return <Tr>
                                         <Td>{index + 1}</Td>
-                                        <Td>{user.full_name}</Td>
-                                        <Td>{formattedPhoneNumber(`${user.phone_number}`)}</Td>
-                                        <Td>{user.password}</Td>
+                                        <Td>{user?.full_name}</Td>
+                                        <Td>{formattedPhoneNumber(`${user?.phone_number}`)}</Td>
+                                        <Td>{user?.password}</Td>
                                         <Td>
 
                                             <Td>
@@ -199,7 +199,7 @@ const Founder = ({ role, view }) => {
 
                                                         </> :
                                                         <Button variant="danger" size="sm" onClick={() => {
-                                                            setUpdateId(user._id)
+                                                            setUpdateId(user?._id)
                                                         }} ><BsPen className="text-blue-600" /></Button>
                                                     }
                                                 </span>

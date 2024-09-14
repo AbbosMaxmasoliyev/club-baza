@@ -119,7 +119,7 @@ const UserItem = () => {
     return (
         <div className='font-mont'>
             <div className="flex flex-row justify-between items-center sticky top-16 dark:bg-gray-800 bg-white py-3">
-                <h1 className='text-xl font-mont dark:text-white'>Users</h1>
+                <h1 className='text-xl font-mont dark:text-white'>Mijozlar</h1>
                 <div className="flex gap-2">
                     <Input type="text" onBlur={e => {
                         setSearch(e.target.value)

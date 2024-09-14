@@ -7,6 +7,7 @@ import {
     HiOutlineHome,
     HiUsers
 } from 'react-icons/hi'
+import { CiCircleList } from "react-icons/ci";
 
 const navigationIcon = {
     home: <HiOutlineHome />,
@@ -14,7 +15,9 @@ const navigationIcon = {
     collapseMenu: <HiOutlineTemplate />,
     groupSingleMenu: <HiOutlineDesktopComputer />,
     groupCollapseMenu: <HiOutlineColorSwatch />,
-    users: <HiUsers />
+    users: <HiUsers />,
+    list: <CiCircleList />,
+    
 }
 
 export default navigationIcon

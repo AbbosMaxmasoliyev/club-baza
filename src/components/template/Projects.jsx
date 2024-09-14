@@ -93,7 +93,7 @@ const Projects = ({ club_id }) => {
     }
     const onDialogOk = async () => {
         try {
-            let data = await deleteProject(club_id, deleteData._id)
+            let data = await deleteProject(club_id, deleteData?._id)
             console.log(data);
 
             setDeleteData({})
@@ -143,13 +143,13 @@ const Projects = ({ club_id }) => {
                 >
                     <h5 className="mb-4">Loyihani o'chirmoqchimisiz</h5>
                     <p>
-                        Kanal nomi: {deleteData.channelName}
+                        Kanal nomi: {deleteData?.channelName}
                     </p>
                     <p>
-                        Qo'shimcha izoh: {deleteData.description}
+                        Qo'shimcha izoh: {deleteData?.description}
                     </p>
                     <p>
-                        Yaratilgan sanasi: {moment(deleteData.createdAt).format("DD-MM-YYYY")}
+                        Yaratilgan sanasi: {moment(deleteData?.createdAt).format("DD-MM-YYYY")}
                     </p>
                     <div className="text-right mt-6">
                         <Button
