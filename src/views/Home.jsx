@@ -35,7 +35,7 @@ const Home = () => {
 			let response = await getDashboard()
 			console.log(response);
 
-			setInformation(response.data.clubs)
+			setInformation(response.data.data)
 		} catch (error) {
 
 		}
@@ -53,7 +53,6 @@ const Home = () => {
 	}
 	useEffect(() => {
 		console.log(role);
-
 		if (role === "superadmin") {
 
 			dashboard()
@@ -68,17 +67,40 @@ const Home = () => {
 	return (
 		<div className='flex flex-col'>
 			<h1 className='mb-5'>Dashboard</h1>
-			{role === "superadmin" ? <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3">
+			{role === "superadmin" ? <div className="grid grid-cols-1 gap-3 text-white">
 				{
 					information?.map((key) => {
 						return (
-							<Link to={`/club/${key._id}`}>
-								<Card className="w-full max-h-36">
-									<p className='text-2xl font-semibold font-mont '>{key?.name}</p>
-									<p className='text-xl dark:text-white'>Loyihalar soni: {key?.projects?.length}</p>
-									<p className='text-xl dark:text-white'>Url: {key?.url}</p>
-								</Card>
-							</Link>
+							<Card className="w-full max-h-auto">
+								<p className='text-2xl font-semibold font-mont '>{key?.club}</p>
+
+								<div className='grid-cols-1 grid md:grid-cols-3  gap-4 '>
+									{
+										key?.error ? <p>Ma'lumotlar mavjud emas</p> : <>
+											{
+												key?.data?.data?.map(info => {
+													let cleaned = info
+													if (cleaned?.type === "number") {
+														return <div className='flex w-[100%] md:w-[50%] justify-between items-center'>
+															<p className='font-semibold flex '>{cleaned?.label}: </p>
+															<p className='font-bold text-2xl'>{cleaned?.count}</p>
+														</div>
+													} else if (cleaned?.type === "array") {
+														return <div className='flex flex-col justify-center'>
+															<p className='font-semibold '>{cleaned?.label}</p>
+															{
+																cleaned?.count?.map(counts => (
+																	<p className='font-semibold text-xl'>{counts?._id?.month}.{counts?._id?.year}:   {counts?.totalAmount ? counts?.totalAmount : counts?.count}</p>
+																))
+															}
+														</div>
+													}
+												})
+											}
+										</>
+									}
+								</div>
+							</Card>
 						)
 
 					})

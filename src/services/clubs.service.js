@@ -173,3 +173,20 @@ export const updateSubscribeAdmin = async (id, club_id, data) => {
 
     }
 }
+
+
+
+export const getDashboardFounder = async () => {
+    try {
+        let clientResponse = await BaseService.get(`admin/dashboard`)
+        console.log(clientResponse);
+
+        return clientResponse.data.data
+
+    } catch (error) {
+        console.log(error);
+        return error
+
+
+    }
+}

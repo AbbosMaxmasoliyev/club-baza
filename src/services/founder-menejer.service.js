@@ -49,6 +49,7 @@ export const getUsersDebtors = async (query) => {
 
 
 
+
 export const clientGetById = async (id) => {
     try {
         let response = await instance.get(`/client/v1/${id}`, {

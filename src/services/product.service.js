@@ -4,7 +4,7 @@ import BaseService from "./BaseService"
 
 export const getDashboard = async (data) => {
     try {
-        let resp = await BaseService.get("/admin/club", {
+        let resp = await BaseService.get("/admin/dashboard", {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
             }
